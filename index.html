@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Cards - Setup Base</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-gray-200 min-h-screen">
+    <!-- Main View (Dashboard & Library) -->
+    <div id="main-view" class="relative z-10">
+        <div class="container mx-auto p-4 md:p-8">
+            <header class="flex justify-between items-center mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold tracking-wider text-white">NEXUS CARDS</h1>
+                <div id="player-level-display" class="text-right"></div>
+            </header>
+            <div class="bg-gray-800/50 backdrop-blur-sm p-6 rounded-lg shadow-lg mb-8 text-center">
+                <h2 class="text-xl font-semibold mb-3">Curator's Dashboard</h2>
+                <p class="text-gray-400 mb-4">Manage your collection. Create new `.json` files in the `/cards` subdirectories.</p>
+                <button id="sync-library-btn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-md transition-colors duration-300">Sync Library</button>
+                 <p id="sync-status" class="text-sm text-gray-400 mt-2 h-4"></p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg shadow-lg text-center"><h3 class="text-gray-400 text-sm font-medium">Total Cards</h3><p id="kpi-total-cards" class="text-3xl font-bold">0</p></div>
+                <div class="bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg shadow-lg text-center"><h3 class="text-gray-400 text-sm font-medium">Cards Mastered</h3><p id="kpi-cards-mastered" class="text-3xl font-bold">0</p></div>
+                <div class="bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg shadow-lg text-center"><h3 class="text-gray-400 text-sm font-medium">Mastery Rate</h3><p id="kpi-mastery-rate" class="text-3xl font-bold">0%</p></div>
+            </div>
+            <main>
+                <h2 class="text-2xl font-bold mb-4">Card Library</h2>
+                <div id="card-library" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                    <div id="loading-spinner" class="col-span-full text-center p-10"><p class="text-lg">Click "Sync Library" to begin.</p></div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <!-- Card Detail Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex justify-center items-center hidden z-50 p-4">
+        <div id="modal-content-area" class="w-full max-w-2xl relative">
+            <div class="modal-card w-full aspect-[16/9]" style="perspective: 2000px;">
+                <div class="modal-card-inner relative w-full h-full">
+                    <!-- Front of the Card -->
+                    <div class="modal-card-front bg-gray-800 border border-gray-700 rounded-lg shadow-2xl p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h2 id="modal-title" class="text-2xl font-bold"></h2>
+                            <button id="modal-close-btn" class="text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <img id="modal-img" src="" alt="Card Art" class="w-full md:w-1/3 object-cover rounded-md">
+                            <div class="flex-1">
+                                <h3 class="font-semibold text-lg mb-2">Summary</h3>
+                                <p id="modal-summary" class="text-gray-300 text-sm"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Back of the Card -->
+                    <div class="modal-card-back bg-gray-800 border border-gray-700 rounded-lg shadow-2xl p-6 flex flex-col justify-between">
+                         <div>
+                            <h3 id="modal-back-title" class="text-xl font-bold mb-4">Course Intel</h3>
+                            <div id="modal-back-content" class="space-y-2"></div>
+                         </div>
+                         <div id="modal-action-buttons" class="mt-4 flex flex-col sm:flex-row gap-2"></div>
+                    </div>
+                </div>
+            </div>
+            <button id="flip-card-btn" class="absolute -bottom-12 left-1/2 -translate-x-1/2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">Flip Card</button>
+        </div>
+    </div>
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-md flex justify-center items-center hidden z-50 p-4">
+        <div id="quiz-content" class="bg-gray-900 rounded-lg shadow-2xl p-8 w-full max-w-3xl text-white">
+            <h2 id="quiz-title" class="text-2xl font-bold mb-6"></h2>
+            <div id="quiz-questions-area"></div>
+            <div class="mt-6 flex justify-between items-center">
+                <button id="quiz-submit-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-md">Submit Answers</button>
+                <p id="quiz-result-text" class="text-lg font-semibold"></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

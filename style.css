@@ -1,0 +1,164 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0c0a18;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Animated Nebula Background */
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    inset: -150px;
+    z-index: -1;
+    background-repeat: no-repeat;
+    animation: move-nebula 45s infinite linear;
+}
+
+body::before {
+    background-image:
+        radial-gradient(ellipse at 33% 45%, #5a2a88, transparent),
+        radial-gradient(ellipse at 80% 30%, #2a5a88, transparent),
+        radial-gradient(ellipse at 60% 80%, #882a5a, transparent);
+    opacity: 0.3;
+}
+
+body::after {
+    background-image:
+        radial-gradient(ellipse at 20% 70%, #2a885a, transparent),
+        radial-gradient(ellipse at 50% 25%, #885a2a, transparent),
+        radial-gradient(ellipse at 90% 65%, #2a8888, transparent);
+    animation-direction: reverse;
+    animation-duration: 35s;
+    opacity: 0.3;
+}
+
+@keyframes move-nebula {
+    0% {
+        transform: rotate(0deg) translateX(10%) translateY(5%) scale(1);
+    }
+
+    50% {
+        transform: rotate(180deg) translateX(-15%) translateY(-10%) scale(1.2);
+    }
+
+    100% {
+        transform: rotate(360deg) translateX(10%) translateY(5%) scale(1);
+    }
+}
+
+.perspective-container {
+    perspective: 1000px;
+}
+
+.nexus-card {
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.perspective-container:hover .nexus-card {
+    transform: rotateY(var(--rotateY)) rotateX(var(--rotateX)) scale3d(1.05, 1.05, 1.05);
+}
+
+.warframe-glare {
+    position: relative;
+    overflow: hidden;
+}
+
+.warframe-glare::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(110deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 60%);
+    transform: translateX(-100%);
+    animation: glare-animation 3s infinite ease-in-out;
+}
+
+@keyframes glare-animation {
+
+    0% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Card Level Styles */
+.level-2-border {
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.7);
+    /* Purple pulse */
+    border: 2px solid rgba(124, 58, 237, 0.8);
+}
+
+.level-3-border {
+    /* EPIC/MASTERED Card Styling */
+    border: 2px solid;
+    border-image-slice: 1;
+    border-width: 2px;
+    border-image-source: linear-gradient(to left, #f7b733, #fc4a1a);
+    animation: epic-glow 2s infinite alternate;
+}
+
+@keyframes epic-glow {
+
+    from {
+        box-shadow: 0 0 5px #fc4a1a, 0 0 10px #f7b733;
+    }
+
+    to {
+        box-shadow: 0 0 20px #fc4a1a, 0 0 30px #f7b733;
+    }
+}
+
+/* Card Flip Styles */
+.modal-card-inner {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.modal-card.is-flipped .modal-card-inner {
+    transform: rotateY(180deg);
+}
+
+.modal-card-front,
+.modal-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.modal-card-back {
+    transform: rotateY(180deg);
+}
+
+/* Quiz Styles */
+.quiz-option {
+    transition: background-color 0.2s;
+}
+
+.quiz-option.selected {
+    background-color: #4c1d95;
+    /* Dark purple */
+}
+
+.quiz-option.correct {
+    background-color: #166534;
+    /* Green */
+}
+
+.quiz-option.incorrect {
+    background-color: #991b1b;
+    /* Red */
+}
