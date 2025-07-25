@@ -1,0 +1,20 @@
+[
+  {
+    "id": "WI-042-AI_Business_Prototyping",
+    // --- Data from JSON file ---
+    "cardName": "AI Prototype Engine",
+    "title": "AI-Powered Business Prototyping",
+    "summary": "Leveraging generative AI...",
+    "coverArtUrl": "https://example.com/thumbnail.jpg",
+    "rarityScore": 88,
+    "status": "In Progress", // Updated by sync logic or user actions
+    "level": 2,              // Updated by sync logic or user actions (quizzes)
+    "category": "Wealth",
+    "latentAbility": "Generates one new AI business idea per day.",
+    // --- Derived/Calculated/Workflow Fields ---
+    "guidePath": "cards/wealth/WI-042-AI_Business_Prototyping.html", // Derived from id/category
+    "guideGenerated": true, // (Future) Flag based on HTML file existence check
+    // Fields for dashboard rendering
+  },
+  // ... more card objects
+]
