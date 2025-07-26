@@ -24,7 +24,7 @@ A gamified learning platform that turns knowledge into collectible Nexus Cards. 
 
 1. Create a new JSON file in one of the category directories under `/cards` (e.g., `/cards/wealth/`)
 2. Use the template in `/cards/card-template.md` as a reference for the JSON structure
-3. Follow the naming convention: `[CATEGORY_PREFIX]-XXX-Title.json` (e.g., `[WI]-018-New_Wealth_Tactic.json`)
+3. Follow the naming convention: `[CATEGORY_PREFIX]-XXX-Title.json` (e.g., `[WI]-018-New_Wealth_Tactic.json`) or `[CATEGORY_PREFIX]-XXX.json` for simpler naming
 4. Commit and push to GitHub
 5. Click "Sync Library" in the app to load the new cards
 
